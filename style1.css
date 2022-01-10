@@ -1,0 +1,12 @@
+button {
+  background: olive;
+  color: white;
+  border: 1px solid black;
+}
+
+.brd {
+    border: 3px double black; /* Параметры границы */
+    background: #FFF8DC; /* Цвет фона */
+    padding: 10px; /* Поля вокруг текста */
+   }
+   

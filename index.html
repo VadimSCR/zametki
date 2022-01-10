@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <script src="vue.js"></script>
+		<link rel="stylesheet" href="style1.css">
+    <title>JS-приложение "Заметки"</title
+  </head>
+  <body class="bg-white">
+  <div id="app">
+    <div class="container">
+            <div class="col-md-5">
+            <div class="mb-5">
+              <input type="heading" class="form-control" id="title" placeholder="Название заметки" v-model="getTask().title">
+            </div>
+            </div>
+            <div class="col-md-5">
+            <div class="mb-5">
+			<p>   </p>
+              <input type="heading" class="form-control" id="body" placeholder="Суть задачи или действия" v-model="getTask().body">
+            </div>
+          </div>
+
+          <div>
+              <div class="brd" style="width: 40rem;" v-for="(task, i) in tasks" :data-i="i" @click="id=i">
+                  <div class="card-body">
+                    <h2 class="card-title"> {{task.title}}</h2>
+					<h5 class="card-text"> {{task.body}} </h5>
+                    <p class="card-title"> {{task.priority}}</p>
+					<p class="card-title"> {{task.vrema}}</p>
+                    <p class="card-text"> {{task.time}}</p>
+                    <p class="card-status" v-for="status in task.status">{{status}}</p>
+                  </div>
+              </div>
+			  
+			  <p class="lead" >Обязательность выполнения</p>
+		  <select  class="custom-select" v-model="getTask().priority">
+            <p>
+              <option value="Обязательно к выполнению">Обязательно к выполнению</option>
+              <option value="Можно отложить">Можно отложить</option>
+              <option value="Есть, но выполнять не обязательно">Есть, но выполнять не обязательно</option>
+              <option value="">Ничего не выбирать</option>
+            </p>
+			<p>   </p>
+          </select>
+		  
+		  <p>   </p>
+		  <p class="lead" >Приоритет заметки(Чем больше, тем выше приоритет)</p>
+		  <select  class="custom-select" v-model="getTask().vrema">
+            <p>
+              <option value="Приоритет 1">1</option>
+              <option value="Приоритет 2">2</option>
+              <option value="Приоритет 3">3</option>
+			  <option value="Приоритет 4">4</option>
+			  <option value="Приоритет 5">5</option>
+			  <option value="">Без приоритета</option>
+            </p>
+		  </select>
+			  <p class="lead" >Длительность заметки</p> 
+              <input type="radio"  value="Заметка на один день"  v-model="getTask().time"> Один день
+              <input type="radio"  value="Заметка на одну неделю"  v-model="getTask().time"> Одна неделя
+              <input type="radio"  value="Заметка на один месяц"  v-model="getTask().time"> Один месяц
+			  <input type="radio"  value="Заметка на один год"  v-model="getTask().time"> Один год
+			  <p>   </p>
+              <p class="lead" >Статус заметки</p>
+              <input type="checkbox" id="one" value="Выполнено" v-model="getTask().status">
+                <label for="Выполнено">Выполнено</label>
+              <input type="checkbox" id="two" value="В работе" v-model="getTask().status">
+                  <label for="В работе">В работе</label>
+              <input type="checkbox" id="three" value="Не выполнено" v-model="getTask().status">
+                <label for="Не выполнено">Не выполнено</label>
+              </div>
+			  <p>   </p>
+          <button class="btn btn-success" @click="storeData()">Добавить</button>
+          </div>
+        </div>
+    <script src="script.js"></script>
+  </body>
+</html>
